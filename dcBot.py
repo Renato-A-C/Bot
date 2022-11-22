@@ -18,9 +18,18 @@ tree = app_commands.CommandTree(client)
 
 @tree.command(name= "test", description = "testing", guild = discord.Object(id = 571722603920752650))
 async def self(interaction: discord.Interaction, name: str):
-    await interaction.response.send_message(f"Olá {name}! eu fui feito a base do Discord. py")   
+    await interaction.response.send_message(f"Olá {name}! eu fui feito a base do Discord.py")   
      
-@tree.command(name= "Sexo", description = "talvez", guild = discord.Object(id = 571722603920752650))
-async def self(interaction: discord.Interaction, name: str):
-    await interaction.response.send_message(f"Olá {name}! Então tu tá afim de fud3 até o t4l0?")
-client.run('MTA0MzAxMTY2Mzc0MzQyNjYyMg.G6B8OK.-FjTUNaB_Xy_YbARdBjOo_W9tMgq1hYiz7_0nU')
+@tree.command(name= "surra", description = "em alguém", guild = discord.Object(id = 571722603920752650))
+async def self(interaction: discord.Interaction, atacante: str, atacado: str, objeto:str, tempo:str):
+    await interaction.response.send_message(f"Por pedido de {atacante}, o alvo {atacado} vai levar uma surra de {objeto} por {tempo} minutos")
+    
+@client.event
+async def on_ready():
+    print('calculadora')
+    DiscordComponents(client)
+
+buttons = [Button(style=ButtonStyle.grey, Label='1')]
+    
+    
+client.run('MTA0MzAxMTY2Mzc0MzQyNjYyMg.GgvdSC.Pd0BM0mq4UH_VXl48dUd9HDYe3b77vkrxqkPI0')
