@@ -1,6 +1,7 @@
 import discord
 from discord import app_commands
-
+from discord.ext import commands
+import random
 class aclient(discord.Client):
     def __init__(self):
         super().__init__(intents=discord.Intents.default())
@@ -29,18 +30,28 @@ async def self(interaction: discord.Interaction, atacante: str, atacado: str, ob
     
 
 @tree.command(name="calculadora", description="calcula algo",guild = discord.Object(id = 1042560674812923914))
-async def self(interaction: discord.Interaction,primeiro_numero:float,tipo_de_operação:str, segundo_numero:float):
-    if tipo_de_operação == "x":
+@app_commands.describe(operacoes='tipos de operações')
+@app_commands.choices(operacoes=[
+    discord.app_commands.Choice(name='vezes',value=1),
+    discord.app_commands.Choice(name='divisao',value=2),
+    discord.app_commands.Choice(name='subtraçao',value=3),
+    discord.app_commands.Choice(name='adiçao',value=4)
+])
+async def self(interaction: discord.Interaction,primeiro_numero:float,operacoes:discord.app_commands.Choice[int], segundo_numero:float):
+    
+    if operacoes.name == "vezes":
         resultado = primeiro_numero*segundo_numero
         await interaction.response.send_message(f" a resposta é {resultado}")
-    elif tipo_de_operação == "/":
+    elif operacoes.name == "divisao":
         resultado = primeiro_numero/segundo_numero
         await interaction.response.send_message(f" a resposta é {resultado}") 
-    elif tipo_de_operação == "-":
+    elif operacoes.name == "subtraçao":
         resultado = primeiro_numero-segundo_numero
         await interaction.response.send_message(f" a resposta é {resultado}") 
-    elif tipo_de_operação == "+":
+    elif operacoes.name == "adiçao":
         resultado = primeiro_numero+segundo_numero
         await interaction.response.send_message(f" a resposta é {resultado}") 
+        
 
-client.run('')
+
+client.run("MTA0MzAxMTY2Mzc0MzQyNjYyMg.GJ4MKs.vE89gFLabLaRapK-9wGKFcUM_cObiuI8A8pU5Q")
