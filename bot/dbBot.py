@@ -1,6 +1,5 @@
 import discord
 import datetime
-
 import math
 from discord import app_commands
 from discord.ext import commands
@@ -21,7 +20,7 @@ class abot(discord.Client):
         
 client = abot()
 tree = app_commands.CommandTree(client)
-ree.command(name= "teste", description = "testando", guild = discord.Object(id = 571722603920752650))
+@tree.command(name= "teste", description = "testando", guild = discord.Object(id = 571722603920752650))
 async def self(interaction: discord.Interaction):
     await interaction.response.send_message(f"Olá! eu fui feito a base do Discord.py . Sim eu tô funcionando :thumbsup:")   
 
