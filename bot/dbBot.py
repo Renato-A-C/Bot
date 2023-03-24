@@ -14,22 +14,22 @@ class abot(discord.Client):
     async def on_ready(self):
         await self.wait_until_ready()
         if not self.synced:
-            await tree.sync(guild = discord.Object(id=571722603920752650))
+            await tree.sync(guild = discord.Object(id=581572127501713411))
             self.synced = True
         print(f"Entramos como {self.user}.")
         
 client = abot()
 tree = app_commands.CommandTree(client)
-@tree.command(name= "teste", description = "testando", guild = discord.Object(id = 571722603920752650))
+@tree.command(name= "teste", description = "testando", guild = discord.Object(id = 581572127501713411))
 async def self(interaction: discord.Interaction):
     await interaction.response.send_message(f"Olá! eu fui feito a base do Discord.py . Sim eu tô funcionando :thumbsup:")   
 
-@tree.command(name= "pergunte", description = "e o bot responde", guild = discord.Object(id = 571722603920752650))
+@tree.command(name= "pergunte", description = "e o bot responde", guild = discord.Object(id = 581572127501713411))
 async def self(interaction: discord.Interaction, pergunta: str):
     respostas= ["não sei", "quem sabe","se eu soubesse eu te falava","não :)","a va ti lascar rapa","Sim","para com issae bicho"]
     await interaction.response.send_message(f"**Pergunta: **{pergunta}\n**Resposta**: {random.choice(respostas)}")   
 
-@tree.command(name="randomfoto",description="acha uma foto ae",guild = discord.Object(id = 571722603920752650))
+@tree.command(name="randomfoto",description="acha uma foto ae",guild = discord.Object(id = 581572127501713411))
 async def get_random_image(img):
     
     num= random.randint(0, 1920)    
@@ -41,7 +41,7 @@ async def get_random_image(img):
         )
     Embed.set_image(url="https://api.lorem.space/image?w=1920&h=1080")
     await img.channel.send(embed=Embed)
-@tree.command(name= "surra", description = "em alguém", guild = discord.Object(id = 571722603920752650))
+@tree.command(name= "surra", description = "em alguém", guild = discord.Object(id = 581572127501713411))
 async def self(interaction: discord.Interaction, atacante: str, atacado: str, objeto:str, tempo:float):
     if type(tempo) != float:
         await interaction.response.send_message(f"comando errado, o tempo deve ser apenas numérico")
@@ -49,7 +49,7 @@ async def self(interaction: discord.Interaction, atacante: str, atacado: str, ob
         await interaction.response.send_message(f"Por pedido de {atacante}, o alvo {atacado} vai levar uma surra de {objeto} por {round(tempo)} minutos")
     
 
-@tree.command(name="calculadora", description="calcula algo",guild = discord.Object(id = 571722603920752650))
+@tree.command(name="calculadora", description="calcula algo",guild = discord.Object(id = 581572127501713411))
 @app_commands.describe(operacoes='tipos de operações')
 @app_commands.choices(operacoes=[
     discord.app_commands.Choice(name='vezes',value=1),
@@ -75,4 +75,4 @@ async def self(interaction: discord.Interaction,primeiro_numero:float,operacoes:
 
 
 
-client.run("MTA0MzAxMTY2Mzc0MzQyNjYyMg.GYRr25.uK3qRg8lREYSs1B1QPAIAo86_f1gWKuNnHeDMM")
+client.run("MTA0MzAxMTY2Mzc0MzQyNjYyMg.G6YCZ6.uJgUv-zI9U5EN9KhNq5qYujqPctqYjj0kOrU0Y")
