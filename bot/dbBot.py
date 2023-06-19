@@ -44,6 +44,13 @@ async def get_random_image(img):
         )
     Embed.set_image(url=(f"https://picsum.photos/{num}/{num2}"))
     await img.channel.send(embed=Embed)
+@zonbot.command(name="fotorandom",description="acha uma foto ae")
+async def FotoRandom(img):
+    
+    num= random.randint(144, 1920)   
+    num2= random.randint(144, 1920) 
+
+    await img.response.send_message(f"https://picsum.photos/{num}/{num2}")
 @zonbot.command(name= "surra", description = "em alguém")
 async def self(interaction: discord.Interaction, atacante: str, atacado: str, objeto:str, tempo:float):
     if type(tempo) != float:
@@ -79,5 +86,8 @@ async def self(interaction: discord.Interaction,primeiro_numero:float,operacoes:
 @zonbot.command(name= "fotocj", description = "Foto do Cejota",)
 async def self(interaction: discord.Interaction):
     await interaction.response.send_message(f"https://c1.wallpaperflare.com/preview/240/187/733/carbon-black-barbecue-charcoal.jpg") 
+@zonbot.command(name= "devat", description = "link na descrição",)
+async def self(interaction: discord.Interaction):
+    await interaction.response.send_message("https://discord.com/developers/active-developer") 
 
 client.run("MTA0MzAxMTY2Mzc0MzQyNjYyMg.GUADCe.Axu9ziWGTWKZidyxGJ9U2VFOB1p254LbHcO__Y")
