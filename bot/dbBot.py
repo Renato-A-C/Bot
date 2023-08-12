@@ -1,10 +1,12 @@
 import discord
+
 import time
 import datetime
 import math
 from discord import app_commands
 from discord.ext import commands
 import random
+
 #z0n4 571722603920752650 guild = discord.Object(id=571722603920752650
 #ads 1042560674812923914
 class abot(discord.Client):
@@ -23,11 +25,21 @@ client = abot()
 zonbot = app_commands.CommandTree(client)
 @zonbot.command(name= "teste", description = "testando",)
 async def self(interaction: discord.Interaction):
-    await interaction.response.send_message(f"Olá! eu fui feito a base do Discord.py . Sim eu tô funcionando :thumbsup:")   
+    await interaction.response.send_message(f"Olá! eu fui feito a base do Discord.py . Sim eu tô funcionando :thumbsup:") 
+@zonbot.event
+async def on_message():
+    print("ready")
+
+
+
+@zonbot.command(name= "lapadaseca", description = "eita bixo")
+async def self(interaction: discord.Interaction):
+    a="https://tenor.com/view/toma-pra-respeitar-paulo-wilson-gif-18861036"
+    await interaction.response.send_message(f"TOME\n {a}")
 
 @zonbot.command(name= "pergunte", description = "e o bot responde")
 async def self(interaction: discord.Interaction, pergunta: str):
-    respostas= ["não sei", "quem sabe","se eu soubesse eu te falava","não :)","a va ti lascar rapa","Sim","para com issae bicho","IMPOSSÍVEL","só tem um jeito: capotando na porrada","olha o dicionário q tu descobre"]
+    respostas= ["não sei", "quem sabe","se eu soubesse eu te falava","não :)","a va ti lascar rapa","Sim","para com issae bicho","IMPOSSÍVEL","só tem um jeito: capotando na porrada","olha o dicionário q tu descobre","se vc n sabe imagina eu","...","em resumo da ópera: BUGUEI", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi hendrerit ex vitae molestie aliquet. Proin a elit accumsan, lobortis urna ut, consectetur erat. Nam ut est mattis, porta mauris vel, suscipit orci. Curabitur at imperdiet diam. Fusce sed maximus arcu. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur accumsan gravida sagittis. Curabitur ullamcorper diam eu placerat convallis. Proin imperdiet bibendum metus, ultrices consectetur ante luctus eu. Phasellus quis elit purus. Donec orci leo, rhoncus sit amet nibh eu, accumsan efficitur justo. Quisque eu justo porta dui lobortis consequat eu non purus. Aenean facilisis non lacus ut fringilla. Sed libero risus, viverra in viverra in, feugiat nec quam. Maecenas imperdiet sollicitudin quam vitae scelerisque.Phasellus vel dui in nulla laoreet dictum sed id erat. Quisque sollicitudin est nec velit ultricies, eget commodo augue euismod. Sed euismod vulputate turpis. Donec magna risus, tincidunt et enim vitae, vehicula dictum augue. Vivamus feugiat diam a velit imperdiet sagittis. Etiam ut nibh venenatis, vestibulum nisl quis, ornare nisl. Mauris vel eros quis mauris bibendum interdum sed nec lorem."]
     await interaction.response.send_message(f"**Pergunta: **{pergunta}\n**Resposta**: {random.choice(respostas)}")   
 
 @zonbot.command(name="randomfoto",description="acha uma foto ae")
