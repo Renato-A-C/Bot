@@ -5,7 +5,7 @@ import os
 import asyncio
 from itertools import cycle
 import json
-from Valor import Valor
+import Valor
 #import ValorToken
 client = commands.Bot(command_prefix=[".","*"], intents=discord.Intents.all())
 @client.event
