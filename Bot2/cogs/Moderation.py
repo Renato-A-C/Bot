@@ -23,7 +23,7 @@ class Moderation(commands.Cog):
         else:
             await ctx.send(f"Primeiro coloque um número válido")
     @commands.command()
-    @commands.has_permissions(Kick_members= True)
+    @commands.has_permissions(kick_members = True)
     async def kick(self,ctx,member: discord.Member, modreason):
         await ctx.guild.kick(member)
         
