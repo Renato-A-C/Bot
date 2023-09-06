@@ -102,4 +102,4 @@ async def self(interaction: discord.Interaction):
 async def self(interaction: discord.Interaction):
     await interaction.response.send_message("https://discord.com/developers/active-developer") 
 
-client.run("MTA0MzAxMTY2Mzc0MzQyNjYyMg.GUADCe.Axu9ziWGTWKZidyxGJ9U2VFOB1p254LbHcO__Y")
+client.run("token")
