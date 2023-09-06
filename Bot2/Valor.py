@@ -4,5 +4,5 @@ class Valor:
 
     def _pegarToken(self):
         
-        return "MTA0MzAxMTY2Mzc0MzQyNjYyMg.GUADCe.Axu9ziWGTWKZidyxGJ9U2VFOB1p254LbHcO__Y"
+        return "Taque o token"
         
