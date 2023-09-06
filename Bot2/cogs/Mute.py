@@ -36,13 +36,13 @@ class Mute(commands.Cog):
             
         await member.add_roles(mute_role)
         conf_embed = discord.Embed(title="Success!", color=discord.Color.green())
-        conf_embed.add_field(name="MUTADO:", value=f"@<{user.mention}> has been muted from the server by {ctx.author.mention}.", inline=False)
+        conf_embed.add_field(name="MUTADO:", value=f"@<{member.mention}> has been muted from the server by {ctx.author.mention}.", inline=False)
         await ctx.send(embed=conf_embed)
 
     @commands.command()
     @commands.has_permissions(manage_roles = True)
     async def unmute(self, ctx, member:discord.Member):
-        with open("cogs\jsonFiles\mutes.json","r") as f:
+        with open("cogs\jsonfiles\mutes.json","r") as f:
             role = json.load(f)
             
             mute_role = discord.utils.get(ctx.guild.roles, name = role[str(ctx.guild.id)])
@@ -50,7 +50,7 @@ class Mute(commands.Cog):
         await member.remove_roles(mute_role)
         
         conf_embed = discord.Embed(title="Success!", color=discord.Color.green())
-        conf_embed.add_field(name="DESMUTADO:", value=f"@<{user.mention}> has been unmuted from the server by {ctx.author.mention}.", inline=False)
+        conf_embed.add_field(name="DESMUTADO:", value=f"@<{member.mention}> has been unmuted from the server by {ctx.author.mention}.", inline=False)
         await ctx.send(embed=conf_embed)
 
 async def setup(client):
