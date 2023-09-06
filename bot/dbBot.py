@@ -11,7 +11,7 @@ import random
 #ads 1042560674812923914
 class abot(discord.Client):
     def __init__(self):
-        super().__init__(intents=discord.Intents.default())
+        super().__init__(intents=discord.Intents.all())
         self.synced = False
 
     async def on_ready(self):
