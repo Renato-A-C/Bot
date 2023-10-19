@@ -1,4 +1,5 @@
 import discord
+from discord.utils import get
 from discord.ext import commands, tasks
 import random
 import os
@@ -14,26 +15,27 @@ async def on_ready():
 ####### 
 @client.event
 async def on_guild_join(guild):
-    with open("cogs\jsonFiles\mutes.json","r") as f:
+    with open(".\prirepo\Bot2\cogs\jsonFiles\mutes.json","r") as f:
         mute_role = json.load(f)
         
         mute_role[str(guild.id)] = None
         
-    with open("cogs\jsonFiles\mutes.json","w") as f:
+    with open(".\prirepo\Bot2\cogs\jsonFiles\mutes.json","w") as f:
         json.dump(mute_role, f, indent=4)
 ###########  
 @client.event
 async def on_guild_remove(guild):
-    with open("cogs\jsonFiles\mutes.json","r") as f:
+    with open(".\prirepo\Bot2\cogs\jsonFiles\mutes.json","r") as f:
         mute_role = json.load(f)
+        
         
         mute_role.pop(str(guild.id))
         
-    with open("cogs\jsonFiles\mutes.json","w") as f:
-        json.dump(mute_role, f, indent=4)
+    with open(".\prirepo\Bot2\cogs\jsonFiles\mutes.json","w") as f:
+        json.dumps(mute_role, f, indent=4)
 
 async def load():
-    for filename in os.listdir(".\Bot\Bot2\cogs"):
+    for filename in os.listdir(".\prirepo\Bot\Bot2\cogs"):
         if filename.endswith(".py"):
             await client.load_extension(f"cogs.{filename[:-3]}")
 

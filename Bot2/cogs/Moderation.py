@@ -48,19 +48,16 @@ class Moderation(commands.Cog):
     @commands.guild_only()
     @commands.has_permissions(ban_members = True)
     async def unban(self, ctx, userId):
-        user = discord.Object(id=userId)
-        await ctx.guild.unban(user)
+        member = discord.Object(id=userId)
+        await ctx.guild.unban(member)
         
         conf_embed = discord.Embed(title="Success!", color=discord.Color.green())
-        conf_embed.add_field(name="unbaned:", value=f"@<{user.mention}> has been unbanned from the server by {ctx.author.mention}.", inline=False)
+        conf_embed.add_field(name="unbaned:", value=f"@<{member.mention}> has been unbanned from the server by {ctx.author.mention}.", inline=False)
 
 
         await ctx.send(embed=conf_embed)
         
-        @clear.error
-        async def clear_error(self, ctx, error):
-            if isinstance(error, commands.MissingRequiredArgument):
-                await ctx.send("Error: Falta algum tipo de parâmetro, ou tá excedendo, é um argumento e é em numero")
+        
 async def setup(client):
     await client.add_cog(Moderation(client))
     
