@@ -14,7 +14,7 @@ class Pergunte(commands.Cog):
 
     @commands.command()
     async def pergunte(self, ctx, * , questao):
-        with open("Bot\Bot2\cogs\txts\respostas.txt","r") as f:
+        with open("C:\Git\Bot\Bot2\cogs\quack\call.txt","r") as f:
             respostas_random = f.readlines()
             resposta = random.choice(respostas_random)
         
