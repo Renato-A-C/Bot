@@ -15,27 +15,27 @@ async def on_ready():
 ####### 
 @client.event
 async def on_guild_join(guild):
-    with open(".\prirepo\Bot2\cogs\jsonFiles\mutes.json","r") as f:
+    with open("C:\Git\Bot\Bot2\cogs\jsonFiles\mutes.json","r") as f:
         mute_role = json.load(f)
         
         mute_role[str(guild.id)] = None
         
-    with open(".\prirepo\Bot2\cogs\jsonFiles\mutes.json","w") as f:
+    with open("C:\Git\Bot\Bot2\cogs\jsonFiles\mutes.json","w") as f:
         json.dump(mute_role, f, indent=4)
 ###########  
 @client.event
 async def on_guild_remove(guild):
-    with open(".\prirepo\Bot2\cogs\jsonFiles\mutes.json","r") as f:
+    with open("C:\Git\Bot\Bot2\cogs\jsonFiles\mutes.json","r") as f:
         mute_role = json.load(f)
         
         
         mute_role.pop(str(guild.id))
         
-    with open(".\prirepo\Bot2\cogs\jsonFiles\mutes.json","w") as f:
+    with open("C:\Git\Bot\Bot2\cogs\jsonFiles\mutes.json","w") as f:
         json.dumps(mute_role, f, indent=4)
 
 async def load():
-    for filename in os.listdir(".\prirepo\Bot\Bot2\cogs"):
+    for filename in os.listdir("C:\Git\Bot\Bot2\cogs"):
         if filename.endswith(".py"):
             await client.load_extension(f"cogs.{filename[:-3]}")
 
@@ -46,14 +46,16 @@ async def main():
         await load()
         await client.start(chaas)
 
-@client.event
-async def on_command_error(ctx, error):
-    if isinstance(error, commands.MissingRequiredArgument):
-        await ctx.send("deu erro, falta argumentos")
+ 
+        
 @client.command(aliases=["quem"])
 async def on_message(ctx):
     await ctx.send("te perguntou?")
     
+@client.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.MissingRequiredArgument):
+        await ctx.send("deu erro, falta argumentos")    
 asyncio.run(main())
 
 # ctx.send envia mensagem, 
