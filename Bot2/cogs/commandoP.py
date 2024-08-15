@@ -1,16 +1,27 @@
 import discord
-from discord.ext import commands, tasks
+from discord.ext import commands
 import random
-import os
-import asyncio
-from itertools import cycle
+import json
 
-class RetornosSimples(commands.Cog):
-    def __init__(self, client):
-        self.client = client
+
+class commandoP(commands.Cog):
+    def __init__(self, bot):
+        self.bot = bot
     @commands.Cog.listener()
     async def on_ready(self):
-        print("RetornoSimples.py is ready")
+        print("Prefixos operacionais.")
+
+    @commands.command()
+    async def pergunte(self, ctx, * , questao):
+        with open("C:\Git\Bot\Bot2\cogs\quack\call.txt","r") as f:
+            respostas_random = f.readlines()
+            resposta = random.choice(respostas_random)
+        
+            await ctx.send(resposta)
+    @commands.command()
+    async def ping(self,ctx):
+        bot_latency = round(self.bot.latency * 1000)
+        await ctx.send(f"Pong {bot_latency} ms.")
         
     @commands.command()
     async def agarrar(self,ctx):
@@ -35,7 +46,8 @@ class RetornosSimples(commands.Cog):
             resposta = random.choice(respostas_random)
             await ctx.send(resposta)
             
+            
+
         
-        
-async def setup(client):
-    await client.add_cog(RetornosSimples(client))
+async def setup(bot):
+    await bot.add_cog(commandoP(bot))

@@ -1,11 +1,12 @@
 import discord
-
+import asyncio
 import time
 import datetime
 import math
 from discord import app_commands
 from discord.ext import commands
 import random
+
 
 #z0n4 571722603920752650 guild = discord.Object(id=571722603920752650
 #ads 1042560674812923914
@@ -17,18 +18,18 @@ class abot(discord.Client):
     async def on_ready(self):
         await self.wait_until_ready()
         if not self.synced:
+            
+            
             await zonbot.sync()
             self.synced = True
         print(f"Entramos como {self.user}.")
         
 client = abot()
 zonbot = app_commands.CommandTree(client)
-@zonbot.command(name= "teste", description = "testando",)
+@zonbot.command(name= "teste", description = "testando")
 async def self(interaction: discord.Interaction):
     await interaction.response.send_message(f"Olá! eu fui feito a base do Discord.py . Sim eu tô funcionando :thumbsup:") 
-@zonbot.event
-async def on_message():
-    print("ready")
+
 
 
 
@@ -102,4 +103,13 @@ async def self(interaction: discord.Interaction):
 async def self(interaction: discord.Interaction):
     await interaction.response.send_message("https://discord.com/developers/active-developer") 
 
-client.run("inativo")
+async def main():
+    chave = Valor(valor="ativo")
+    chaas = chave._pegarToken()
+
+    bot = abot()
+
+    async with bot:
+        await bot.start(chaas)
+
+asyncio.run(main())

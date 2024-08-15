@@ -13,26 +13,6 @@ client = commands.Bot(command_prefix=[".","*"], intents=discord.Intents.all())
 async def on_ready():
     print("Bot conectado")
 ####### 
-@client.event
-async def on_guild_join(guild):
-    with open("C:\Git\Bot\Bot2\cogs\jsonFiles\mutes.json","r") as f:
-        mute_role = json.load(f)
-        
-        mute_role[str(guild.id)] = None
-        
-    with open("C:\Git\Bot\Bot2\cogs\jsonFiles\mutes.json","w") as f:
-        json.dump(mute_role, f, indent=4)
-###########  
-@client.event
-async def on_guild_remove(guild):
-    with open("C:\Git\Bot\Bot2\cogs\jsonFiles\mutes.json","r") as f:
-        mute_role = json.load(f)
-        
-        
-        mute_role.pop(str(guild.id))
-        
-    with open("C:\Git\Bot\Bot2\cogs\jsonFiles\mutes.json","w") as f:
-        json.dumps(mute_role, f, indent=4)
 
 async def load():
     for filename in os.listdir("C:\Git\Bot\Bot2\cogs"):
