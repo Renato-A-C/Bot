@@ -20,14 +20,19 @@ class commandoS(commands.Cog):
         gif_url = "https://tenor.com/view/toma-pra-respeitar-paulo-wilson-gif-18861036"
         await interaction.response.send_message(f"TOME\n {gif_url}")
 
-    @app_commands.command(name="pergunte", description="e o bot responde")
+    @app_commands.command(name="pergunte", description="E o bot responde")
     async def pergunte(self, interaction: discord.Interaction, pergunta: str):
-        respostas = [
-            "não sei", "quem sabe", "se eu soubesse eu te falava", "não :)", "a va ti lascar rapa", "Sim", 
-            "para com issae bicho", "IMPOSSÍVEL", "só tem um jeito: capotando na porrada", "olha o dicionário q tu descobre",
-            "se vc n sabe imagina eu", "...", "em resumo da ópera: BUGUEI"
-        ]
-        await interaction.response.send_message(f"**Pergunta:** {pergunta}\n**Resposta:** {random.choice(respostas)}")
+        try:
+            with open("Bot/Bot2/cogs/quack/anwers.txt", "r") as f:
+                respostas_random = f.readlines()
+            # Remove a quebra de linha das respostas, caso existam
+            respostas_random = [resposta.strip() for resposta in respostas_random]
+            resposta = random.choice(respostas_random)
+            await interaction.response.send_message(f"**Pergunta:** {pergunta}\n**Resposta:** {resposta}")
+        except FileNotFoundError:
+            await interaction.response.send_message("Não consegui encontrar o arquivo com as respostas.")
+        except Exception as e:
+            await interaction.response.send_message(f"Ocorreu um erro: {str(e)}")
 
     @app_commands.command(name="randomfoto", description="acha uma foto aleatória")
     async def randomfoto(self, interaction: discord.Interaction):
