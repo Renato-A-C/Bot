@@ -3,11 +3,17 @@ from discord.ext import commands
 import json
 import os
 
-class Leveling(commands.Cog):
+
+class Xispe(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.file_path = 'Bot\BotRaiz\cogs\jsonFiles\LEVEL.json'
+        self.file_path = "C:\Git\Bot\BotRaiz\cogs\jsonFiles\LEVEL.json"
         self.load_data()
+        
+    @commands.Cog.listener()
+    async def on_ready(self):
+        print("Nivelamento ta operacional.")
+
 
     def load_data(self):
         if os.path.exists(self.file_path):
@@ -27,11 +33,11 @@ class Leveling(commands.Cog):
         self.data['members'][member_id]['xp'] += xp_to_add
         self.save_data()
 
-    @commands.Cog.listener()
+    
     async def on_message(self, message):
         if message.author.bot:
             return
-
+        print(f"módulo xp {message.content}")
         member_id = str(message.author.id)
         message_length = len(message.content)
 
@@ -65,5 +71,5 @@ class Leveling(commands.Cog):
         else:
             await ctx.send(f"{member.mention} ainda não tem XP registrado.")
 
-def setup(bot):
-    bot.add_cog(Leveling(bot))
+async def setup(bot):
+    await bot.add_cog(Xispe(bot))
